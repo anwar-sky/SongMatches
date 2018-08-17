@@ -5,10 +5,9 @@ import static org.junit.Assert.assertEquals;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +15,13 @@ import java.util.List;
 @RunWith(JUnitParamsRunner.class)
 public class MatchServiceTest {
 
-    private static MatchService matchService;
     private static Song songA;
     private static Song songB;
     private static Song songC;
     private static Song songD;
 
-    @BeforeClass
-    public static void beforeClass(){
-        matchService = new MatchService();
+    @Before
+    public void setUp() {
         songA = new Song("A", 1.1f);
         songB = new Song("B", 3.3f);
         songC = new Song("C", 2.5f);
@@ -47,7 +44,7 @@ public class MatchServiceTest {
     })
     public void getRequiredAmountOfSongsTest(int numTopRatedSimilarSong, int expectedResult) {
         List<Song> listOfSongs = songA.getSimilarSongs();
-        List<Song> requiredAmountOfSongs = matchService.getRequiredAmountOfSongs(listOfSongs, numTopRatedSimilarSong);
+        List<Song> requiredAmountOfSongs = MatchService.getRequiredAmountOfSongs(listOfSongs, numTopRatedSimilarSong);
         int actualResult = requiredAmountOfSongs.size();
         assertEquals(expectedResult,actualResult);
     }
@@ -59,7 +56,7 @@ public class MatchServiceTest {
     @Test
     public void getSortedSongsTest(){
         List<Song> songs = asList(songB, songD, songA, songC);
-        List<Song> actualResult = matchService.getSortedSongs(songs);
+        List<Song> actualResult = MatchService.getSortedSongs(songs);
         List<Song> expectedResult = asList(songD, songB, songC, songA);
         assertEquals(actualResult, expectedResult);
     }
@@ -70,7 +67,7 @@ public class MatchServiceTest {
     @Test
     public void getSongsInNetworkTest(){
         List<Song> songs = new ArrayList<>();
-        List<Song> actualResult = matchService.getSongsInNetwork(songA, songs);
+        List<Song> actualResult = MatchService.getSongsInNetwork(songA, songs);
         List<Song> expectedResult = asList(songA, songB, songD, songC);
         assertEquals(actualResult, expectedResult);
     }

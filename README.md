@@ -15,38 +15,38 @@ You may assume the number of requested song matches for a song signature will ne
 ![song-similarities](https://gitlab.uk.shazamteam.net/amp/song-matches/raw/master/song-similarities.jpg)
 
 ```
-     $> song A 1.1
-     $> song B 3.3
-     $> song C 2.5
-     $> song D 4.7
-     $> similar A B
-     $> similar A C
-     $> similar B D
-     $> similar C D
+      song A 1.1
+      song B 3.3
+      song C 2.5
+      song D 4.7
+      similar A B
+      similar A C
+      similar B D
+      similar C D
 ```
 
 
 * getSongMatches(A, 2): should return {B, D}
 
 ```
-    $> getSongMatches A 2
-    $> result B D
+     getSongMatches A 2
+     result B D
 ```
 
 
 * getSongMatches(A, 4) should return {B, C, D}
 
 ```
-    $> getSongMatches A 4
-    $> result B C D
+     getSongMatches A 4
+     result B C D
 ```
 
 
 * getSongMatches(A, 1) should return D
 
 ```
-    $> getSongMatches A 1
-    $> result D
+     getSongMatches A 1
+     result D
 ```
 
 Please design a solution that is production ready and operates as a library.
